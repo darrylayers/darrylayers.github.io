@@ -1,193 +1,150 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>My Apps — Showcase</title>
-  <style>
-    :root{
-      --bg: #f6f7fb;
-      --card: #ffffff;
-      --text: #0f1720;
-      --muted: #6b7280;
-      --accent: #2563eb;
-      --glass: rgba(255,255,255,0.6);
-    }
-    [data-theme="dark"]{
-      --bg: #0b1220;
-      --card: #071028;
-      --text: #e6eef8;
-      --muted: #9aa7bf;
-      --accent: #4f8cff;
-      --glass: rgba(255,255,255,0.04);
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0; font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
-      background:linear-gradient(180deg,var(--bg), #ffffff 60%);
-      color:var(--text);
-      -webkit-font-smoothing:antialiased;
-      min-height:100vh;
-      padding:24px;
-    }
-    .page{
-      max-width:1100px;margin:0 auto;
-    }
-    header{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-bottom:18px}
-    h1{font-size:20px;margin:0}
-    .controls{display:flex;gap:8px;align-items:center}
-    .search{padding:8px 12px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);background:var(--card);min-width:220px}
-    .tabs{display:flex;gap:8px;padding:8px;background:var(--glass);border-radius:12px}
-    .tab{padding:8px 12px;border-radius:8px;background:transparent;border:none;cursor:pointer}
-    .tab[aria-selected="true"]{background:var(--accent);color:white}
-    main{margin-top:14px}
-    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
-    .card{background:var(--card);border-radius:12px;padding:12px;box-shadow:0 4px 18px rgba(10,10,12,0.06);display:flex;flex-direction:column;gap:8px}
-    .screenshot{height:120px;border-radius:8px;background:linear-gradient(135deg,rgba(0,0,0,0.06),rgba(0,0,0,0.02));display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px}
-    .meta{display:flex;justify-content:space-between;align-items:center}
-    .name{font-weight:600}
-    .desc{font-size:13px;color:var(--muted)}
-    .tags{display:flex;gap:6px;flex-wrap:wrap}
-    .tag{font-size:12px;padding:4px 8px;border-radius:999px;background:rgba(0,0,0,0.04)}
-    .actions{display:flex;gap:8px}
-    .btn{padding:8px 10px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);background:transparent;cursor:pointer}
-    footer{margin-top:18px;color:var(--muted);font-size:13px;text-align:center}
-    @media (max-width:600px){header{flex-direction:column;align-items:stretch} .controls{justify-content:space-between}}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darryl Ayers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #0a0a0a;
+            color: #00ff00;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .terminal {
+            background: #000;
+            border: 2px solid #00ff00;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+        }
+
+        .prompt {
+            color: #00ff00;
+            margin-bottom: 5px;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            animation: blink 1.5s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .tagline {
+            color: #00cc00;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            color: #00ff00;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .links {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .links li {
+            margin-bottom: 8px;
+        }
+
+        .links a {
+            color: #00ff00;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .links a:hover {
+            color: #fff;
+            text-shadow: 0 0 10px #00ff00;
+        }
+
+        .links a::before {
+            content: "> ";
+            color: #00cc00;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background: #00ff00;
+            animation: cursor-blink 1s step-end infinite;
+            margin-left: 5px;
+        }
+
+        @keyframes cursor-blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+    </style>
 </head>
 <body>
-  <div class="page" id="page">
-    <header>
-      <div>
-        <h1>My Apps</h1>
-        <div style="color:var(--muted);font-size:13px">A simple, shareable app showcase</div>
-      </div>
-      <div class="controls">
-        <input id="search" class="search" placeholder="Search apps..." aria-label="Search apps">
-        <div class="tabs" role="tablist" aria-label="App categories">
-          <button class="tab" role="tab" data-filter="all" aria-selected="true">All</button>
-          <button class="tab" role="tab" data-filter="web">Web</button>
-          <button class="tab" role="tab" data-filter="mobile">Mobile</button>
-          <button class="tab" role="tab" data-filter="tool">Tools</button>
+    <div class="container">
+        <div class="terminal">
+            <div class="prompt">user@darryl:~$</div>
+            <h1>Darryl Ayers</h1>
+            <p class="tagline">Developer | Builder | Problem Solver</p>
+
+            <div class="section">
+                <div class="section-title">./projects</div>
+                <ul class="links">
+                    <li><a href="/projects/shambles/home.html">Shambles - 2.5D Unity game</a></li>
+                    <li><a href="/projects/picks/home.html">Movie Picks - My rated films & shows</a></li>
+					<li><a href="#">Spotify Stats - Coming soon</a></li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <div class="section-title">./about</div>
+                <p>Hey! I'm a developer who loves building things primarily using C#. I've worked on production desktop applications for Noregon Systems and Intertek Alchemy.</p>
+                <p>Currently working on cataloging my favorite movies and shows while improving my web development skills using vanilla JavaScript.</p>
+				<p>I've built a couple video games and some mobile apps in C# for fun using Unity and MAUI, respectively.</p>
+            </div>
+
+            <div class="section">
+                <div class="section-title">./contact</div>
+                <ul class="links">
+                    <li><a href="https://github.com/darrylayers">GitHub</a></li>
+                    <li><a href="darryl@darrylayers.com">Email</a></li>
+                </ul>
+            </div>
+
+            <div class="prompt">user@darryl:~$<span class="cursor"></span></div>
         </div>
-        <button id="themeToggle" class="btn" title="Toggle theme">🌙</button>
-      </div>
-    </header>
-
-    <main>
-      <section id="appsGrid" class="grid" aria-live="polite">
-        <!-- Cards inserted by JS -->
-      </section>
-    </main>
-
-    <footer>
-      Tip: Click a card's name to open the app link. This page works offline once saved locally.
-    </footer>
-  </div>
-
-  <template id="cardTpl">
-    <article class="card" data-categories="">
-      <div class="screenshot">No image</div>
-      <div class="meta">
-        <div>
-          <div class="name"></div>
-          <div class="desc"></div>
-        </div>
-        <div class="actions">
-          <a class="btn open" target="_blank" rel="noopener">Open</a>
-        </div>
-      </div>
-      <div class="tags" aria-hidden="true"></div>
-    </article>
-  </template>
-
-  <script>
-    // Example apps data - replace with your own
-    const apps = [
-      {name:'Pennyvine', desc:'Budgeting app (demo)', categories:['tool','web'], url:'#', image:''},
-      {name:'Weatherly', desc:'Simple weather site', categories:['web'], url:'#', image:''},
-      {name:'Tasktastic', desc:'A tiny todo for mobile', categories:['mobile','tool'], url:'#', image:''},
-      {name:'PhotoFlow', desc:'Photo gallery', categories:['web','mobile'], url:'#', image:''},
-    ];
-
-    const grid = document.getElementById('appsGrid');
-    const tpl = document.getElementById('cardTpl');
-    const search = document.getElementById('search');
-    const tabs = Array.from(document.querySelectorAll('.tab'));
-    let activeFilter = 'all';
-
-    function render(list){
-      grid.innerHTML = '';
-      if(list.length === 0){
-        grid.innerHTML = '<div style="grid-column:1/-1;color:var(--muted);padding:32px;text-align:center">No apps match.</div>';
-        return;
-      }
-      list.forEach(a => {
-        const node = tpl.content.cloneNode(true);
-        const article = node.querySelector('article');
-        article.dataset.categories = a.categories.join(' ');
-        const shot = node.querySelector('.screenshot');
-        if(a.image){
-          const img = document.createElement('img'); img.src = a.image; img.alt = a.name; img.style.width='100%'; img.style.height='100%'; img.style.objectFit='cover'; img.style.borderRadius='8px';
-          shot.innerHTML=''; shot.appendChild(img);
-        } else {
-          shot.textContent = a.categories.join(' • ');
-        }
-        node.querySelector('.name').textContent = a.name;
-        node.querySelector('.desc').textContent = a.desc;
-        const open = node.querySelector('.open'); open.href = a.url;
-        const tags = node.querySelector('.tags');
-        a.categories.forEach(t=>{
-          const s = document.createElement('span'); s.className='tag'; s.textContent = t; tags.appendChild(s);
-        });
-        grid.appendChild(node);
-      });
-    }
-
-    function applyFilter(){
-      const q = search.value.trim().toLowerCase();
-      const filtered = apps.filter(a => {
-        const byTab = activeFilter === 'all' ? true : a.categories.includes(activeFilter);
-        const byQuery = q === '' ? true : (a.name.toLowerCase().includes(q) || a.desc.toLowerCase().includes(q) || a.categories.join(' ').includes(q));
-        return byTab && byQuery;
-      });
-      render(filtered);
-    }
-
-    // tab behavior
-    tabs.forEach(t => {
-      t.addEventListener('click', ()=>{
-        tabs.forEach(x=>x.setAttribute('aria-selected', 'false'));
-        t.setAttribute('aria-selected', 'true');
-        activeFilter = t.dataset.filter;
-        applyFilter();
-      });
-    });
-
-    search.addEventListener('input', ()=>applyFilter());
-
-    // theme toggle
-    const themeToggle = document.getElementById('themeToggle');
-    const root = document.documentElement;
-    function setTheme(dark){
-      if(dark){ root.setAttribute('data-theme','dark'); themeToggle.textContent='☀️'; localStorage.setItem('theme','dark'); }
-      else{ root.removeAttribute('data-theme'); themeToggle.textContent='🌙'; localStorage.setItem('theme','light'); }
-    }
-    themeToggle.addEventListener('click', ()=> setTheme(!(root.hasAttribute('data-theme'))));
-    // restore theme
-    if(localStorage.getItem('theme') === 'dark') setTheme(true);
-
-    // initial render
-    render(apps);
-
-    // Accessibility: keyboard switching for tabs
-    document.querySelectorAll('[role="tab"]').forEach((tab, i, list)=>{
-      tab.addEventListener('keydown', (e)=>{
-        if(e.key === 'ArrowRight') list[(i+1)%list.length].focus();
-        if(e.key === 'ArrowLeft') list[(i-1+list.length)%list.length].focus();
-        if(e.key === 'Enter' || e.key === ' ') tab.click();
-      });
-    });
-  </script>
+    </div>
 </body>
 </html>
