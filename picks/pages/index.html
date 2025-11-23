@@ -2,14 +2,32 @@
 <html lang="en">
   <head>
     <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
-    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/index.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Darryl's Picks | Home</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-DB802VEEJ8"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-DB802VEEJ8");
+    </script>
   </head>
   <body>
     <div class="navbar">
-      <img class="logo" src="../assets/favicon.svg" />
+      <a href="/" class="logo-link">
+        <img class="logo" src="../assets/favicon.svg" alt="Home" />
+      </a>
+      <div><a href="./index.html">Home</a></div>
       <div><a href="./movies.html">Movies</a></div>
       <div><a href="./shows.html">TV Shows</a></div>
       <div><a href="./about.html">About</a></div>
@@ -19,16 +37,13 @@
       <p>
         I built this website to learn and practice some HTML, CSS, and
         JavaScipt.<br />
-        Maybe you will also find some TV shows are movies you are interested in
-        as well.<br />
+        Maybe you will also find some <a href="./shows.html">TV shows</a> or
+        <a href="./movies.html">movies</a> you are interested in as well.<br />
         This website uses TMDB to access movie posters and media details like
         summaries.<br />
         It's rather simple, but has helped me improve. Hope you enjoy!
       </p>
     </div>
-    <div id="media"></div>
-    <script src="../js/config.js"></script>
-    <script src="../js/script.js"></script>
   </body>
   <footer class="footer">
     <p>Part of <a href="https://darrylayers.com/">DarrylAyers.com</a></p>

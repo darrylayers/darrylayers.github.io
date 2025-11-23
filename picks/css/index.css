@@ -1,0 +1,188 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Font, font color, background gradient, and fullscreen */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(180deg, #000000 0%, #ffb619 100%);
+  min-height: 100vh;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Logo styling */
+.logo {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+}
+
+.logo:hover {
+  transition: transform 0.3s ease;
+  transform: rotate(360deg) scale(1.1);
+}
+
+/* Navbar styling */
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 40px 20px 350px; /* top right bottom left */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  flex-wrap: wrap;
+}
+
+/* Remove link effects from logo */
+.navbar .logo-link {
+  padding: 0;
+}
+
+.navbar .logo-link::after {
+  display: none;
+}
+
+.navbar .logo-link:hover {
+  background: none;
+}
+
+/* Navbar links */
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+  white-space: nowrap;
+}
+
+/* Cool hover underline effect */
+.navbar a::after {
+  content: "";
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 80%;
+  height: 2px;
+  background: #fff;
+  transition: transform 0.3s ease;
+}
+
+.navbar a:hover::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.navbar a:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Greeting section */
+.greeting {
+  text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+  margin: 40px auto 30px;
+  max-width: 1200px;
+  padding: 0 40px;
+  text-align: left;
+  animation: fadeInDown 0.8s ease;
+  font-size: 2em;
+}
+
+/* Links in greeting section */
+.greeting a {
+  color: #ffb619;
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 2px solid #ffb619;
+  transition: all 0.3s ease;
+}
+
+.greeting a:hover {
+  color: #ffd166;
+  border-bottom-color: #ffd166;
+  text-shadow: 0 0 10px rgba(255, 182, 25, 0.5);
+}
+/* Footer styling */
+.footer {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  text-align: center;
+  margin-top: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer a {
+  color: #ffb619;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: #fff;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile screen sizing */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px 20px;
+    gap: 10px;
+  }
+
+  .navbar a {
+    font-size: 16px;
+    padding: 8px 12px;
+  }
+
+  .logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .greeting {
+    font-size: 1.5em;
+    padding: 0 20px;
+    margin: 20px auto;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .navbar {
+    gap: 8px;
+    padding: 12px 15px;
+  }
+
+  .navbar a {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  .greeting {
+    font-size: 1.2em;
+  }
+}
