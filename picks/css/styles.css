@@ -1,112 +1,13 @@
-/*Clean up default values and include padding/borders in the total width/height*/
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/*Font, font color, background gradient, and fullscreen*/
-body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(180deg, #000000 0%, #ffb619 100%);
-  min-height: 100vh;
-  color: #fff;
-}
-
-.greeting {
-  text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
-  margin: 40px 300px 30px;
-  text-align: left;
-  animation: fadeInDown 0.8s ease;
-  font-size: 2em;
-}
-
-@keyframes fadeInDown {
-  from {
-    opacity: 0; /* Invisible */
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1; /* Fully visible */
-    transform: translateY(0); /* Normal position */
-  }
-}
-
-/*Nice square logo, also rotate 360 when hovering + size up a little*/
-.logo {
-  margin-left: 300px;
-  width: 50px;
-  height: 50px;
-}
-
-.logo:hover {
-  transition: transform 0.3s ease;
-  transform: rotate(360deg) scale(1.1);
-}
-
-/*Navbar styling*/
-.navbar {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  padding: 20px 40px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.navbar a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 18px;
-  font-weight: 500;
-  padding: 10px 20px;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-/* Cool hover underline effect */
-.navbar a::after {
-  content: "";
-  position: absolute;
-  bottom: 5px;
-  left: 50%;
-  transform: translateX(-50%) scaleX(0);
-  width: 80%;
-  height: 2px;
-  background: #fff;
-  transition: transform 0.3s ease;
-}
-
-.navbar a:hover::after {
-  transform: translateX(-50%) scaleX(1);
-}
-
-.navbar a:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
 /* Mobile screen sizing*/
 @media (max-width: 768px) {
-  .navbar {
-    padding: 15px 20px;
-    gap: 15px;
-  }
-
-  .logo {
-    width: 40px;
-    height: 40px;
-  }
-
   #movies {
     grid-template-columns: 1fr;
     padding: 40px 20px;
   }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
 }
 
 #media {
