@@ -1,161 +1,168 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Darryl Ayers</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <title>Darryl Austin Ayers</title>
+        <style>
+            :root {
+                --bg: #fdfdfb;
+                --fg: #1c1c1c;
+                --muted: #5c5c5c;
+                --link: #0b4f9c;
+                --rule: #cfcfc8;
+                box-sizing: border-box;
+                padding-top: env(safe-area-inset-top, 0px);
+                padding-bottom: env(safe-area-inset-bottom, 0px);
+                color-scheme: light;
+            }
+            @media (prefers-color-scheme: dark) {
+                :root:not([data-theme="light"]) {
+                    --bg: #17181a;
+                    --fg: #e4e4e0;
+                    --muted: #a0a09a;
+                    --link: #7db3f0;
+                    --rule: #3a3b3e;
+                    color-scheme: dark;
+                }
+            }
+            :root[data-theme="dark"] {
+                --bg: #17181a;
+                --fg: #e4e4e0;
+                --muted: #a0a09a;
+                --link: #7db3f0;
+                --rule: #3a3b3e;
+                color-scheme: dark;
+            }
+            html {
+                scroll-padding-top: env(safe-area-inset-top, 0px);
+            }
+            body {
+                background: var(--bg);
+                color: var(--fg);
+                font-family: Georgia, "Times New Roman", serif;
+                font-size: 18px;
+                line-height: 1.6;
+                max-width: 38rem;
+                margin: 0 auto;
+                padding: 2.5rem 1.25rem 4rem;
+            }
+            h1 {
+                font-size: 2rem;
+                margin: 0 0 0.1rem;
+                font-weight: normal;
+            }
+            h2 {
+                font-size: 1.15rem;
+                margin: 2.2rem 0 0.6rem;
+                border-bottom: 1px solid var(--rule);
+                padding-bottom: 0.2rem;
+            }
+            .sub {
+                color: var(--muted);
+                margin: 0 0 1.5rem;
+            }
+            p {
+                margin: 0 0 1rem;
+            }
+            ul {
+                padding-left: 1.2rem;
+                margin: 0 0 1rem;
+            }
+            li {
+                margin-bottom: 0.35rem;
+            }
+            a {
+                color: var(--link);
+            }
+            .job {
+                margin-bottom: 1.1rem;
+            }
+            .job b {
+                font-weight: bold;
+            }
+            .when {
+                color: var(--muted);
+                font-size: 0.95rem;
+            }
+            footer {
+                margin-top: 3rem;
+                color: var(--muted);
+                font-size: 0.9rem;
+            }
+        </style>
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-PSSFCEPPZX"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
 
-        body {
-            font-family: 'Courier New', monospace;
-            background: #0a0a0a;
-            color: #00ff00;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
+		  gtag('config', 'G-PSSFCEPPZX');
+		</script>	
+    </head>
+    <body>
+        <h1>Darryl Austin Ayers</h1>
+        <p class="sub">Software developer. Asheville, North Carolina.</p>
 
-        .container {
-            max-width: 600px;
-            width: 100%;
-        }
+        <p>
+            I’ve been writing software professionally for <span id="yrs"></span> years, mostly C# and .NET: backend
+            services and desktop applications. I like figuring out how things work, and I build games on the side.
+        </p>
 
-        .terminal {
-            background: #000;
-            border: 2px solid #00ff00;
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
-        }
+        <h2>Work</h2>
 
-        .prompt {
-            color: #00ff00;
-            margin-bottom: 5px;
-        }
-
-        h1 {
-            font-size: 2em;
-            margin-bottom: 10px;
-            animation: blink 1.5s ease-in-out infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .tagline {
-            color: #00cc00;
-            margin-bottom: 30px;
-            font-size: 1.1em;
-        }
-
-        .section {
-            margin-bottom: 25px;
-        }
-
-        .section-title {
-            color: #00ff00;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .links {
-            list-style: none;
-            padding-left: 20px;
-        }
-
-        .links li {
-            margin-bottom: 8px;
-        }
-
-        .links a {
-            color: #00ff00;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .links a:hover {
-            color: #fff;
-            text-shadow: 0 0 10px #00ff00;
-        }
-
-        .links a::before {
-            content: "> ";
-            color: #00cc00;
-        }
-
-        .cursor {
-            display: inline-block;
-            width: 10px;
-            height: 20px;
-            background: #00ff00;
-            animation: cursor-blink 1s step-end infinite;
-            margin-left: 5px;
-        }
-
-        @keyframes cursor-blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        p {
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-    </style>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-PSSFCEPPZX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-PSSFCEPPZX');
-</script>
-	
-</head>
-<body>
-    <div class="container">
-        <div class="terminal">
-            <div class="prompt">user@darryl:~$</div>
-            <h1>Darryl Ayers</h1>
-            <p class="tagline">Developer | Builder | Problem Solver</p>
-
-            <div class="section">
-                <div class="section-title">./projects</div>
-                <ul class="links">
-                    <li><a href="#">Shambles - 2.5D Unity game</a></li>
-                    <li><a href="/picks/pages/index.html">Movie Picks - My rated films & shows</a></li>
-					<li><a href="#">Spotify Stats - Coming soon</a></li>
-                </ul>
-            </div>
-
-            <div class="section">
-                <div class="section-title">./about</div>
-                <p>Hey! I'm a developer who loves building things primarily using C#. I've worked on production desktop applications for Noregon Systems and Intertek Alchemy.</p>
-                <p>Currently working on cataloging my favorite movies and shows while improving my web development skills using vanilla JavaScript.</p>
-				<p>I've built a couple video games and some mobile apps in C# for fun using Unity and MAUI, respectively.</p>
-            </div>
-
-            <div class="section">
-                <div class="section-title">./contact</div>
-                <ul class="links">
-                    <li><a href="https://github.com/darrylayers">GitHub</a></li>
-                    <li><a href="darryl@darrylayers.com">Email</a></li>
-                </ul>
-            </div>
-
-            <div class="prompt">user@darryl:~$<span class="cursor"></span></div>
+        <div class="job">
+            <b>Software Developer III</b>, Intertek Alchemy Systems<br />
+            <span class="when">June 2022 to present</span><br />
+            I work on two core products, Player and Creator. Day to day that’s C#, .NET, and SQL.
         </div>
-    </div>
-</body>
+
+        <div class="job">
+            <b>Software Developer</b>, Noregon Systems<br />
+            <span class="when">May 2019 to June 2022</span><br />
+            Vehicle protocol analysis and diagnostics (JPRO), REST API work, SQL and Entity Framework, Blazor. Built a
+            serverless Azure project on my own and a Xamarin mobile app. Wrote the CMMI documentation too.
+        </div>
+
+        <h2>Things I know</h2>
+        <ul>
+            <li>C# and .NET, backend and desktop</li>
+            <li>.NET MAUI and Xamarin</li>
+            <li>SQL and Entity Framework</li>
+            <li>Blazor and Azure serverless</li>
+            <li>Unity game development</li>
+        </ul>
+
+        <h2>Side projects</h2>
+        <ul>
+            <li>A budgeting app in .NET MAUI</li>
+            <li>A side hustle app</li>
+            <li>A 2.5D stealth and tactics game in Unity, with a dark sense of humor</li>
+        </ul>
+
+        <h2>Education</h2>
+        <ul>
+            <li>B.S. Computer Science, Appalachian State University, 2019</li>
+            <li>A.S., Asheville-Buncombe Technical Community College, 2016</li>
+        </ul>
+
+        <h2>Contact</h2>
+        <p><a href="mailto:darryl@darrylayers.com">darryl@darrylayers.com</a></p>
+
+        <footer>Last updated October 2026.</footer>
+		
+		<script>
+            const start = new Date(2019, 5, 29);
+            const now = new Date();
+            let years = now.getFullYear() - start.getFullYear();
+            if (now.getMonth() < start.getMonth()) {
+                years--;
+            }
+            const yearsElement = document.getElementById("yrs");
+            if (yearsElement && years > 0) {
+                yearsElement.textContent = years;
+            }
+        </script>		
+    </body>
 </html>
